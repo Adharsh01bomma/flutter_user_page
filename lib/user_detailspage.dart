@@ -27,7 +27,7 @@ class _UserDetailspageState extends State<UserDetailspage> {
 
   void _deleteAccount() async {
     await _db.deleteUser();
-    Navigator.pushNamed(context, '/register');
+    Navigator.pushReplacementNamed(context, '/register');
   }
 
   @override
@@ -44,12 +44,13 @@ class _UserDetailspageState extends State<UserDetailspage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Name: ${_userDetails!['name']}'),
-            Text('Name: ${_userDetails!['email']}'),
+            Text('Email: ${_userDetails!['email']}'),
             ElevatedButton(
               onPressed: _deleteAccount,
-              child: Text('Delete Account'),
+              child: const Text('Delete Account'),
             )
           ],
         ),

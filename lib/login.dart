@@ -9,16 +9,15 @@ class MyLogin extends StatefulWidget {
 }
 
 class _MyLoginState extends State<MyLogin> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
   final UserDatabase _db = UserDatabase();
 
   void _loginUser() async {
     String email = _emailController.text;
     String password = _passwordController.text;
 
-    bool isLoggedIn = await _db.loginUser(email, password);
-    if (isLoggedIn) {
+    if (await _db.loginUser(email, password)) {
       Navigator.pushReplacementNamed(context, '/user_details');
     } else {
       ScaffoldMessenger.of(context)
@@ -91,7 +90,8 @@ class _MyLoginState extends State<MyLogin> {
                           child: IconButton(
                             color: Colors.white,
                             onPressed: () {
-                              Navigator.pushNamed(context, '/user_details');
+                              Navigator.pushReplacementNamed(
+                                  context, '/user_details');
                             },
                             icon: Icon(Icons.arrow_forward),
                           ),

@@ -1,7 +1,7 @@
 import 'package:postgres/postgres.dart';
 
 class UserDatabase {
-  late PostgreSQLConnection _connection;
+  late final PostgreSQLConnection _connection;
 
   Future<void> connectToDatabase() async {
     _connection = PostgreSQLConnection(
@@ -15,10 +15,16 @@ class UserDatabase {
   }
 
   Future<void> registerUser(String name, String email, String password) async {
-    await _connection.query(
-      'INSERT INTO users (name, email, password) VALUES (@name, @e, @p)',
-      substitutionValues: {'name': name, 'e': email, 'p': password},
-    );
+    try {
+      await _connection.open();
+      await _connection.query(
+        'INSERT INTO users (name, email, password) VALUES (@name, @e, @p)',
+        substitutionValues: {'name': name, 'e': email, 'p': password},
+      );
+    } catch (e) {
+      print("in catch box");
+      print(e.toString());
+    }
   }
 
   Future<bool> loginUser(String email, String password) async {

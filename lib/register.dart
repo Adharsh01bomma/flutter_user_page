@@ -9,9 +9,9 @@ class MyRegister extends StatefulWidget {
 }
 
 class _MyRegisterState extends State<MyRegister> {
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
   final UserDatabase _db = UserDatabase();
 
   @override
@@ -21,11 +21,17 @@ class _MyRegisterState extends State<MyRegister> {
   }
 
   void _registerUser() async {
+    print("HI Adharsh");
     String name = _nameController.text;
     String email = _emailController.text;
     String password = _passwordController.text;
 
+    print(name);
+    print(email);
+    print(password);
+
     if (name.isNotEmpty && email.isNotEmpty && password.isNotEmpty) {
+      print("inside if condition");
       await _db.registerUser(name, email, password);
 
       Navigator.pushReplacementNamed(context, '/login');
