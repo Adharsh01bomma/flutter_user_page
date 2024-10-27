@@ -21,14 +21,14 @@ class _MyLoginState extends State<MyLogin> {
       Navigator.pushReplacementNamed(context, '/user_details');
     } else {
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Invalid Details!')));
+          .showSnackBar(const SnackBar(content: Text('Invalid Details!')));
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/bloodlogin.jpg'), fit: BoxFit.cover)),
       child: Scaffold(
@@ -36,8 +36,8 @@ class _MyLoginState extends State<MyLogin> {
         body: Stack(
           children: [
             Container(
-              padding: EdgeInsets.only(left: 35, top: 130),
-              child: Text(
+              padding: const EdgeInsets.only(left: 35, top: 130),
+              child: const Text(
                 'Welcome\nBack',
                 style: TextStyle(color: Colors.white, fontSize: 33),
               ),
@@ -59,7 +59,7 @@ class _MyLoginState extends State<MyLogin> {
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10))),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                     TextField(
@@ -72,13 +72,13 @@ class _MyLoginState extends State<MyLogin> {
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10))),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 40,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Sign In',
                           style: TextStyle(
                               fontSize: 28, fontWeight: FontWeight.w700),
@@ -93,12 +93,12 @@ class _MyLoginState extends State<MyLogin> {
                               Navigator.pushReplacementNamed(
                                   context, '/user_details');
                             },
-                            icon: Icon(Icons.arrow_forward),
+                            icon: const Icon(Icons.arrow_forward),
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 40,
                     ),
                     Row(
@@ -108,23 +108,23 @@ class _MyLoginState extends State<MyLogin> {
                           onPressed: () {
                             Navigator.pushNamed(context, '/register');
                           },
-                          child: Text(
+                          child: const Text(
                             'Sign Up',
                             style: TextStyle(
                               decoration: TextDecoration.underline,
                               fontSize: 18,
-                              color: const Color.fromARGB(255, 5, 53, 81),
+                              color: Color.fromARGB(255, 5, 53, 81),
                             ),
                           ),
                         ),
                         TextButton(
                           onPressed: () {},
-                          child: Text(
+                          child: const Text(
                             'Forgot Password',
                             style: TextStyle(
                               decoration: TextDecoration.underline,
                               fontSize: 18,
-                              color: const Color.fromARGB(255, 5, 53, 81),
+                              color: Color.fromARGB(255, 5, 53, 81),
                             ),
                           ),
                         ),

@@ -17,7 +17,7 @@ class _MyRegisterState extends State<MyRegister> {
   @override
   void initState() {
     super.initState();
-    _db.connectToDatabase();
+    // _db.connectToDatabase();
   }
 
   void _registerUser() async {
