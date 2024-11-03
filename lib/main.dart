@@ -20,7 +20,17 @@ class MyApp extends StatelessWidget {
       routes: {
         '/register': (context) => const MyRegister(),
         '/login': (context) => const MyLogin(),
-        '/user_details': (context) => const UserDetailspage(),
+      },
+      onGenerateRoute: (settings) {
+        if (settings.name == '/user_details') {
+          final args = settings.arguments as Map<String, dynamic>?;
+          final email = args?['email'] as String;
+
+          return MaterialPageRoute(
+            builder: (context) => UserDetailspage(email: email),
+          );
+        }
+        return null; // Return null if route doesn't match
       },
     );
   }

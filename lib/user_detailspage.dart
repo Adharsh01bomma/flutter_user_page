@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_user_page/user_database.dart';
 
 class UserDetailspage extends StatefulWidget {
-  const UserDetailspage({super.key});
+  final String email;
+
+  const UserDetailspage({required this.email, Key? key}) : super(key: key);
 
   @override
   State<UserDetailspage> createState() => _UserDetailspageState();
@@ -19,14 +21,14 @@ class _UserDetailspageState extends State<UserDetailspage> {
   }
 
   void _fetchUserDetails() async {
-    final details = await _db.getUserDetails();
+    final details = await _db.getUserDetails(widget.email);
     setState(() {
       _userDetails = details;
     });
   }
 
   void _deleteAccount() async {
-    await _db.deleteUser();
+    await _db.deleteUser(widget.email);
     Navigator.pushReplacementNamed(context, '/register');
   }
 
