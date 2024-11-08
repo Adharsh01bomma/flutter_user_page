@@ -26,9 +26,11 @@ class MyApp extends StatelessWidget {
           final args = settings.arguments as Map<String, dynamic>?;
           final email = args?['email'] as String;
 
-          return MaterialPageRoute(
-            builder: (context) => UserDetailspage(email: email),
-          );
+          if (email != email) {
+            return MaterialPageRoute(
+              builder: (context) => UserDetailspage(email: email),
+            );
+          }
         }
         return null; // Return null if route doesn't match
       },
